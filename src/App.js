@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import Home from "./component/page/Home";
+
+import Contuct from "./component/page/Contuct";
+import { Routes, Route } from "react-router-dom";
+import Header from "./component/Header";
+import About from "./component/page/Login";
+import PrivateRouter from "./component/PrivateRuting/PrivateRouter";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <h2>Deshbord a pritvae router use kora Hoisa </h2>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<About />} />
+        <Route path="/contact" element={<Contuct />} />
+
+        <Route path="/*" element={<PrivateRouter />}>
+          <Route path="deshbord" element={<Contuct />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
